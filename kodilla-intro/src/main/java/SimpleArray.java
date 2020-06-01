@@ -10,7 +10,10 @@ public class SimpleArray {
      String name = names[3];
      int numberOfElements = names.length;
      System.out.println(name);
-     System.out.println("Moja tablica zawiera " + numberOfElements + " elementów");
+     System.out.println("Moja tablica zawiera " + names.length + " elementów");
 
+     for (int i = 0; i < names.length; i++){
+          System.out.println(names[i]);
+     }
     }
 }
