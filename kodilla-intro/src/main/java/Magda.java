@@ -7,8 +7,12 @@ public class Magda {
     private static int suma() {
         int result = 0;
         for (int i = 0; i <= 100; i++) {
-            result = result + (i);
+            if (i % 2 == 0) {
+                result = result + (i);
+            }
         }
-        return result;
+            return result;
+        }
     }
-}
+
+
