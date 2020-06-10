@@ -12,6 +12,11 @@ public class FirstClass {
         Notebook oldNotebook = new Notebook ("1200g", 5000);
         System.out.println(oldNotebook.weight);
         System.out.println(oldNotebook.price);
+
+        if(notebook.price < 900)
+            System.out.println("This notebook is cheap");
+        else
+            System.out.println("This notebook is quite expensive");
     }
 }
 /* public class Notebook {
