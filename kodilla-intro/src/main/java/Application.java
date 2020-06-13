@@ -25,7 +25,7 @@ public class Application {
             userA.showAgeAndHeight();
         }
     }
-
+    /*TODO Review kdrzazga - Pls remove commented out code*/
 
    /* public static void main(String[] args) {
         String name = "Adam";
