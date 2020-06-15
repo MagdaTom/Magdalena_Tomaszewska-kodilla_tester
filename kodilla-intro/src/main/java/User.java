@@ -31,8 +31,8 @@ public class User {
 
 
         int result = 0;
-        for (int i = 0; i < users.length; i++) {
-            result = result + users[i].getAge();
+        for (User user : users) {
+            result = result + user.getAge();
         }
         int averageAge = result / users.length;
 
