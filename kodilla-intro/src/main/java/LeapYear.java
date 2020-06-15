@@ -1,6 +1,6 @@
 public class LeapYear {
     public static void main(String[] args) {
-        int year = 2001;
+        int year = 2020;
 
         System.out.println(year);
         if (isLeap(year))
@@ -11,14 +11,9 @@ public class LeapYear {
     }
 
     private static boolean isLeap(int year) {
-        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
-        /*TODO kdrzazga Pls change to single line
-        * return  (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
-         * */
-            return true;
-        } else {
-            return false;
-        }
+        return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
+
 
     }
+
 }
