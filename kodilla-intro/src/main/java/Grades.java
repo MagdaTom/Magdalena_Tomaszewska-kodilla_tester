@@ -1,5 +1,5 @@
 public class Grades {
-    private int[] grades;
+    private final int[] grades;
     private int size;
 
 
@@ -22,7 +22,7 @@ public class Grades {
     public double averageGrades() {
         double sum = 0;
         for (int i = 0; i < this.size; i++) {
-            sum = sum + this.grades[i];
+            sum += this.grades[i];
         }
         return sum / this.size;
     }
