@@ -1,23 +1,31 @@
 public class Book {
+    private String author;
+    private String title;
+
+    public Book(String author, String title) {
+        this.author = author;
+        this.title = title;
+    }
 
 
-    public static String of(String author, String title) {
-        return author + title;
+    public static Book of(String author, String title) {
+        return new Book(author, title);
+    }
 
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                '}';
     }
 
     public static void main(String[] args) {
 
-        String book = Book.of("Hermann Hesse ", "Wilk stepowy");
+        Book book = Book.of("Hermann Hesse ", "Wilk stepowy");
+
         System.out.println(book);
 
     }
 }
-
-
-
-/* Nie mam pojęcia jak osiągnąć efekt podany w zadaniu tj:
-Book book = Book.of("Isaac Asimov", "The Galaxy");
- */
-/*TODO Review kdrzazga - Pls create a method similar to line 4:
-*   public static Book of(String author, String title)   */
