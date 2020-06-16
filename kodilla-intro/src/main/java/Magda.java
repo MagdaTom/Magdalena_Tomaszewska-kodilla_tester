@@ -2,27 +2,22 @@
 public class Magda {
     public static void main(String[] args) {
 
-    String name = "Magda";
-    String secondName = "Magdalena      ";
-        System.out.println(name.charAt(name.length() -1));
-        System.out.println(name.charAt(2));
-        System.out.println(name.length());
-        System.out.println(name.substring(3));
-        System.out.println(name.substring(1,3));
-        System.out.println(secondName);
-        System.out.println(secondName.trim());
-        System.out.println("Ze spacjami " + secondName + " .");
-        System.out.println("Bez spacji: " + secondName.trim() + ".");
-        System.out.println(name.toUpperCase());
+    String zmienna1 = "Magda";
+    String zmienna2 = "Magda";
 
-        System.out.println(name.startsWith("A"));
-        System.out.println(name.startsWith("Ma"));
-        System.out.println(name.startsWith("MA"));
-        System.out.println(secondName.toLowerCase().trim().startsWith("m"));
-        System.out.println(secondName.endsWith(" "));
-        System.out.println(secondName.contains("Magda"));
-        System.out.println(secondName.replace('a', 'A'));
+    boolean wynik = zmienna1 == zmienna2; //referencje/adres, literał odnosi się do tego samego miejsca w pamięci
+        System.out.println(wynik);
+
+        String zmienna3 = new String("Magda");
+        String zmienna4 = new String("Magda");
+
+        boolean wynik2 = zmienna3 == zmienna4; // dwa obiekty to dwa rozne Stringi,
+        System.out.println(wynik2);
+
+        System.out.println(zmienna1.equals(zmienna2));
+
     }
+
 }
 
 
