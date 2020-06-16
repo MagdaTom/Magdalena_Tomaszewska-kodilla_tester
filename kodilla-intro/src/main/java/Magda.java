@@ -2,34 +2,25 @@
 public class Magda {
     public static void main(String[] args) {
 
-// Wypisz na ekran liczby od 0 do 30, a następnie od 30 do 0
-        for (int i = 0; i < 31; i++) {
-            System.out.println(i);
-        }
-        for(int i = 30; i >=0; i--){
-            System.out.println(i);
-        }
-//Napisz program, które wypisze tylko liczby parzyste z zakresu od 0 do 30
-        for (int i = 0; i < 31; i++) {
-            if (i % 2 == 0) {
-                System.out.println(i);
-            }
-        }
-        //lub
+/*Utwórz tablicę rozmiaru 10 elementów i uzupełnij liczbami
+Wypisz wszystkie liczby z tej tablicy na ekran. Następnie wypisz
+wszystkie liczby od tyłu.Wykorzystując tablicę z poprzedniego zadania, oblicz sumę wszystkich jej elementów
+ */
+        int[] numbers = new int[]{1, 5, 8, 6, 7, 15, 25, 68, 72, 15};
 
-        for (int i = 0; i < 31; i += 2) {
-            System.out.println(i);
-
-        }
-        /* Podaj dwie dowolne liczby a i b, gdzie a jest mniejsze od b
-        Wypisz na ekran zakres liczb od a do b.*/
-        int a = 5;
-        int b = 10;
-
-        for(int i = a; i<= b; i ++){
-            System.out.println(i);
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.println(numbers[i]);
         }
 
+        for (int i = numbers.length-1; i >= 0; i--){
+            System.out.println(numbers[i]);
+        }
+
+        int sum = 0;
+    for(int i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+    }
+        System.out.println(sum);
 
     }
 }
