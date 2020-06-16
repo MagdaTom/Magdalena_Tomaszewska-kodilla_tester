@@ -1,18 +1,24 @@
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.Random;
+
 public class Magda {
     public static void main(String[] args) {
+    Random random = new Random();  //   Stworzenie obiektu klasy Random, który posłuży do loswania liczb
 
+    int number = random.nextInt(11); /* metoda nextInt() wylosuje liczbe calkowita z zakresu int - losuje liczbe z zakresu
+        0 - n-1 (czyli aby wylosowac z zakresu 0 -10 trzeba woisac 11*/
 
-        for (int i = -3; i <= 3; i++) {
-            if (i < 0)
-                System.out.println("it's cold: " + i);
-            else if (i == 0)
-                System.out.println("it's zero");
-            else
-                System.out.println("it's warm " + i);
-        }
+    System.out.println(number);
     }
-
 }
+
+
+
+
+
+
+
 
 
 
