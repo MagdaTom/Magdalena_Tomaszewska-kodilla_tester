@@ -1,6 +1,6 @@
 package com.kodilla.inheritance.homework;
 
-public class Windows10 extends Windows {
+public class Windows10 extends OperatingSystem {
     public Windows10(int releaseYear) {
         super(releaseYear);
 

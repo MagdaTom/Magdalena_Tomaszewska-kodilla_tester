@@ -6,7 +6,7 @@ public class OperatingSystem {
 
     public OperatingSystem(int releaseYear){
         this.releaseYear = releaseYear;
-        System.out.println(this.releaseYear);
+        System.out.println("Release year: "  + this.releaseYear);
     }
 
     public void turnOn(){

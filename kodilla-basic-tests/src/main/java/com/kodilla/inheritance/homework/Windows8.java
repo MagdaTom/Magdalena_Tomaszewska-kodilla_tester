@@ -1,8 +1,8 @@
 package com.kodilla.inheritance.homework;
 
-public class Windows extends OperatingSystem {
+public class Windows8 extends OperatingSystem {
 
-    public Windows(int releaseYear) {
+    public Windows8(int releaseYear) {
         super(releaseYear);
     }
 
