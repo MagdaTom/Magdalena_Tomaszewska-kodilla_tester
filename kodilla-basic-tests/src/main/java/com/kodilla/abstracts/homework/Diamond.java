@@ -9,7 +9,6 @@ public class Diamond extends Shape {
         this.height = height;
     }
 
-
     @Override
     public double calculateArea() {
         return side * height;

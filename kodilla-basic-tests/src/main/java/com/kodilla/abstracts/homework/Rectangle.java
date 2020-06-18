@@ -8,7 +8,6 @@ public class Rectangle extends Shape {
         this.side = side;
         this.side2 = side2;
     }
-
     @Override
     public double calculateArea() {
         return side * side2;
