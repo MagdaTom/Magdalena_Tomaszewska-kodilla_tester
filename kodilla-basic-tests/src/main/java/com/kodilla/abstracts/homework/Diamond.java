@@ -1,8 +1,8 @@
 package com.kodilla.abstracts.homework;
 
 public class Diamond extends Shape {
-    double side;
-    double height;
+    private double side;
+    private double height;
 
     public Diamond(double side, double height){
         this.side = side;
@@ -12,11 +12,11 @@ public class Diamond extends Shape {
 
     @Override
     public double calculateArea() {
-        return 4 * side;
+        return side * height;
     }
 
     @Override
     public double calculatePerimeter() {
-        return side * height;
+        return 4 * side;
     }
 }
