@@ -5,10 +5,10 @@ public class Person {
     private int age;
     private Job job;
 
-    public Person(String firstName, int age, Job job) {
+    public Person(String firstName, int age) {
         this.firstName = firstName;
         this.age = age;
-        this.job = job;
+        this.job = new ArAdministrator();
     }
 
     public void displayResponsibilities() {
@@ -17,7 +17,7 @@ public class Person {
 
     public static void main(String[] args) {
 
-        Person person = new Person("Agnieszka", 27, new ApAdministrator());
+        Person person = new Person("Agnieszka", 27);
         person.displayResponsibilities();
     }
 
