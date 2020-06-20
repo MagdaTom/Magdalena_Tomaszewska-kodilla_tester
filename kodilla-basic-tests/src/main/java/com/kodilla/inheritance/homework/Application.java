@@ -8,7 +8,5 @@ public class Application {
         Windows10 windows10 = new Windows10(2015);
         windows10.turnOn();
         windows10.turnOff();
-
-
     }
 }

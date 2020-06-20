@@ -8,7 +8,6 @@ public class OperatingSystem {
         this.releaseYear = releaseYear;
         System.out.println("Release year: "  + this.releaseYear);
     }
-
     public void turnOn(){
         System.out.println("System turned on in 3 sec.");
     }
