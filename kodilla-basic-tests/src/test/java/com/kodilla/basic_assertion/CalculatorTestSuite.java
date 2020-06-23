@@ -14,7 +14,6 @@ public class CalculatorTestSuite {
         int b = 8;
         int sumResult = calculator.sum(a, b);
         assertEquals(13, sumResult);
-
     }
 
     @Test
@@ -45,8 +44,5 @@ public class CalculatorTestSuite {
         Calculator calculator = new Calculator();
         int powResult = calculator.power(0);
         assertEquals(0, powResult);
-
     }
-
-
 }
