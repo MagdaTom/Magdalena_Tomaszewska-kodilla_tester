@@ -3,98 +3,120 @@ package com.kodilla.bank.homework;
 public class Bank {
 
     private int transaction;
-    private CashMachine cashmachineA;
-    private CashMachine cashmachineB;
-    private CashMachine cashmachineC;
-    private int depositNumber;
-    private int withdrawalNumber;
-
-
+    private CashMachine cashMachineA;
+    private CashMachine cashMachineB;
+    private CashMachine cashMachineC;
 
     public Bank() {
         this.transaction = transaction;
-        this.cashmachineA = new CashMachine();
-        this.cashmachineB = new CashMachine();
-        this.cashmachineC = new CashMachine();
-
+        this.cashMachineA = new CashMachine();
+        this.cashMachineB = new CashMachine();
+        this.cashMachineC = new CashMachine();
     }
 
-    public CashMachine getCashmachineB() {
-        return cashmachineB;
+    public CashMachine getCashMachineA() {
+        return cashMachineA;
+    }
+
+    public CashMachine getCashMachineB() {
+        return cashMachineB;
+    }
+
+    public CashMachine getCashMachineC() {
+        return cashMachineC;
     }
 
     public void performTransactionA(int transaction) {
-        this.cashmachineA.performTransaction(transaction);
+        this.cashMachineA.performTransaction(transaction);
     }
 
     public void performTransactionB(int transaction) {
-        this.cashmachineB.performTransaction(transaction);
+        this.cashMachineB.performTransaction(transaction);
     }
 
     public void performTransactionC(int transaction) {
-        this.cashmachineC.performTransaction(transaction);
+        this.cashMachineC.performTransaction(transaction);
     }
 
-    public int sumOfBalances() {
-        return cashmachineA.displayBalance() + cashmachineB.displayBalance() + cashmachineC.displayBalance();
 
-    }
 
-    public int totalNumberOfTransactions() {
-        int sum = 0;
-        sum += cashmachineA.numberOfTransactions() + cashmachineB.numberOfTransactions() + cashmachineC.numberOfTransactions();
-        return sum;
-
-    }
-
-    public int sumOfDeposits(CashMachine cashmachine) {//TODO cashMachine
+    public int sumOfDeposits(CashMachine cashMachine) {
         int result = 0;
-        for (int i = 0; i < cashmachine.numberOfTransactions(); i++) {
-            if (cashmachine.getTransaction()[i] > 0) {
-                result += cashmachine.getTransaction()[i];
+        for (int i = 0; i < cashMachine.numberOfTransactions(); i++) {
+            if (cashMachine.getTransaction()[i] > 0) {
+                result += cashMachine.getTransaction()[i];
             }
         }
         return result;
     }
 
-    public int sumOfWithdrawals(CashMachine cashmachine) {
+    public int sumOfWithdrawals(CashMachine cashMachine) {
         int result = 0;
-        for (int i = 0; i < cashmachine.numberOfTransactions(); i++) {
-            if (cashmachine.getTransaction()[i] < 0) {
-                result += cashmachine.getTransaction()[i];
+        for (int i = 0; i < cashMachine.numberOfTransactions(); i++) {
+            if (cashMachine.getTransaction()[i] < 0) {
+                result += cashMachine.getTransaction()[i];
             }
         }
         return result;
     }
 
-    public int numberOfDeposits(CashMachine cashmachine){
+    public int numberOfDeposits(CashMachine cashMachine){
         int result = 0;
-        for (int i = 0; i < cashmachine.numberOfTransactions(); i++) {
-            if (cashmachine.getTransaction()[i] > 0) {
+        for (int i = 0; i < cashMachine.numberOfTransactions(); i++) {
+            if (cashMachine.getTransaction()[i] > 0) {
                 result ++;
             }
         }
         return result;
     }
 
+    public int numberOfWithdrawals(CashMachine cashMachine){
+        int result = 0;
+        for (int i = 0; i < cashMachine.numberOfTransactions(); i++) {
+            if (cashMachine.getTransaction()[i] < 0) {
+                result ++;
+            }
+        }
+        return result;
+    }
+
+    public int totalSumOfBalances() {
+        return cashMachineA.displayBalance() + cashMachineB.displayBalance() + cashMachineC.displayBalance();
+    }
+
+    public int totalNumberOfTransactions() {
+        return cashMachineA.numberOfTransactions() + cashMachineB.numberOfTransactions() + cashMachineC.numberOfTransactions();
+    }
+
     public int totalNumberOfDeposits(){
-        return numberOfDeposits(cashmachineA) + numberOfDeposits(cashmachineB) + numberOfDeposits(cashmachineC);
+        return numberOfDeposits(cashMachineA) + numberOfDeposits(cashMachineB) + numberOfDeposits(cashMachineC);
     }
 
-
-
- /*   public int averageAmountOfDeposits() { TODO
-        return depositsA() + depositsB() + depositsC() / totalNumberOfTransactions();
-
+    public int totalNumbersOfWithdrawals(){
+        return numberOfWithdrawals(cashMachineA) + numberOfWithdrawals(cashMachineB) + numberOfWithdrawals(cashMachineC);
     }
 
-
-    public int averageDepositAmount() {
-        return sumOfBalances() / totalNumberOfTransactions();
+    public int totalSumOfDeposits(){
+        return sumOfDeposits(cashMachineA) +  sumOfDeposits(cashMachineB) + sumOfDeposits(cashMachineC);
     }
-*/
 
+    public int totalSumOfWithdrawals(){
+        return sumOfWithdrawals(cashMachineA) + sumOfWithdrawals(cashMachineB)+ sumOfWithdrawals(cashMachineC);
+    }
 
+    public double averageAmountOfDeposits() {
+        if(totalNumberOfDeposits()==0 ){
+            return 0;
+        }
+        return totalSumOfDeposits() / totalNumberOfDeposits();
+    }
+
+    public double averageAmountOfWithdrawals() {
+        if(totalNumbersOfWithdrawals()==0 ){
+            return 0;
+        }
+        return totalSumOfWithdrawals() / totalNumbersOfWithdrawals();
+    }
 }
 
 

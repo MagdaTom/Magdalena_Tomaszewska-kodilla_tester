@@ -23,7 +23,6 @@ public class CashMachineTestSuite {
         CashMachine cashMachine = new CashMachine();
         cashMachine.setOpeningBalance(1000);
         assertEquals(1000, cashMachine.displayOpeningBalance());
-
     }
 
     @Test
@@ -31,7 +30,6 @@ public class CashMachineTestSuite {
         CashMachine cashMachine = new CashMachine();
         cashMachine.setOpeningBalance(-1000);
         assertEquals(0, cashMachine.displayOpeningBalance());
-
     }
 
     @Test
@@ -61,7 +59,6 @@ public class CashMachineTestSuite {
         assertEquals(2, cashMachine.numberOfTransactions());
     }
 
-
     @Test
     public void shouldReturnCorrectBalanceIfAllConditionsMet(){
         CashMachine cashMachine = new CashMachine();
@@ -81,8 +78,5 @@ public class CashMachineTestSuite {
         cashMachine.performTransaction(1500);
         assertEquals(2550, cashMachine.displayBalance());
     }
-
-
-
 }
 
