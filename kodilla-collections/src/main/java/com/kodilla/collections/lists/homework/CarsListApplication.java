@@ -24,7 +24,7 @@ public class CarsListApplication {
         hondaCars.remove(2);
         hondaCars.remove(hondaCivic);
 
-        System.out.println("Array after removel operation:");
+        System.out.println("Array after removal operation:");
         for(Honda honda : hondaCars) {
             CarUtils.describeCar(honda);
         }
