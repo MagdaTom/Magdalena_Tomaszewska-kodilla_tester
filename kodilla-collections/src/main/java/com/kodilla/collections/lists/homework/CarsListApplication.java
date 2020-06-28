@@ -10,6 +10,9 @@ import java.util.List;
 public class CarsListApplication {
     public static void main(String[] args) {
         List<Honda> hondaCars = new ArrayList<>();
+        /*Excercise says: stwórz kolekcję samochodów (typu ArrayList), której typem elementów będzie dowolna klasa implementująca interfejs Car
+        * Please change List<Honda> to List<Car>
+        * */
         Honda hondaCivic = new Honda(75);
         hondaCars.add(hondaCivic);
         hondaCars.add(new Honda(150));
