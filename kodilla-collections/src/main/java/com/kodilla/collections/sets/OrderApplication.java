@@ -16,7 +16,16 @@ public class OrderApplication {
         System.out.println(orders.size());
         for(Order order : orders)
             System.out.println(order);
+
+        orders.remove(new Order("1/2019", "Iron", 1.0));
+        System.out.println(orders.size());
+
+        for(Order order : orders)
+            System.out.println(order.getProductName());
         }
+
+
+
 
 
     }
