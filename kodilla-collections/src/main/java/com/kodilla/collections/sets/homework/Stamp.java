@@ -3,8 +3,8 @@ package com.kodilla.collections.sets.homework;
 import java.util.Objects;
 
 public class Stamp {
-    private String name;
-    private String size;
+    private String name;//TODO Review - Pls change to numeric value, eg. int or double
+    private String size;//same here
     private boolean isStamped;
 
 
