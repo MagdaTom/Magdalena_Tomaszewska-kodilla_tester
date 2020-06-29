@@ -1,46 +1,38 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Grades {
-    private final int[] grades;
-    private int size;
+    //private final int[] grades;
+    List<Integer> grades = new ArrayList<>();
 
 
     public Grades() {
-        this.grades = new int[10];
-        this.size = 0;
-
-
+        this.grades = grades;
     }
 
-    public void add(int value) {
-        if (this.size == 10) {
-            return;
+        public double averageGrades () {
+            double sum = 0;
+            for (Integer grade : grades) {
+                sum += grade;
+            }
+            return sum / grades.size();
         }
-        this.grades[this.size] = value;
-        this.size++;
-    }
 
 
-    public double averageGrades() {
-        double sum = 0;
-        for (int i = 0; i < this.size; i++) {
-            sum += this.grades[i];
+        public int displayNewGrade () {
+            return grades.get(grades.size() - 1);
         }
-        return sum / this.size;
-    }
 
-
-    public int displayNewGrade() {
-        return this.grades[this.size - 1];
-    }
 
     public static void main(String[] args) {
 
-        Grades grades = new Grades();
-        grades.add(5);
-        grades.add(6);
-        grades.add(3);
-        System.out.println(grades.displayNewGrade());
-        System.out.println(grades.size);
-        System.out.println(grades.averageGrades());
+        Grades gradesMath = new Grades();
+        gradesMath.grades.add(5);
+        gradesMath.grades.add(4);
+        gradesMath.grades.add(3);
+        System.out.println(gradesMath.displayNewGrade());
+        System.out.println(gradesMath.grades.size());
+        System.out.println(gradesMath.averageGrades());
     }
 }
 
