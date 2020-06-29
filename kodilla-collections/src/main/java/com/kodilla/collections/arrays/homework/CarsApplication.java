@@ -10,8 +10,8 @@ import java.util.Random;
 public class CarsApplication {
 
     public static void main(String[] args) {
-        Random random = new Random();
-        Car[] cars = new Car[random.nextInt(15)+1];
+      //  Random random = new Random();
+        Car[] cars = new Car[new Random().nextInt(15)+1];
         for(int n = 0; n < cars.length; n++)
             cars[n] = drawCar();
         for(Car car : cars)
