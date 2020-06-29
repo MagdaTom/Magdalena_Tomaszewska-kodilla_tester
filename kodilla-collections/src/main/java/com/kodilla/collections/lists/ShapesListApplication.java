@@ -26,5 +26,10 @@ public class ShapesListApplication {
             if(square.getArea() > 20)
                 System.out.println(square + ", area: " + square.getArea());
         }
+
+        shapes.remove(sq1);
+        System.out.println(shapes.size());
+        shapes.remove(new Square(1.0));
+        System.out.println(shapes.size());
     }
 }
