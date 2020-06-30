@@ -3,35 +3,41 @@ package com.kodilla.collections.sets.homework;
 import java.util.Objects;
 
 public class Stamp {
-    private String name;//TODO Review - Pls change to numeric value, eg. int or double
-    private String size;//same here
+    private String name;
+    private double length, width;
     private boolean isStamped;
 
 
-    public Stamp(String name, String size, boolean isStamped) {
+    public Stamp(String name, double length, double width, boolean isStamped) {
         this.name = name;
-        this.size = size;
+        this.length = length;
+        this.width = width;
         this.isStamped = isStamped;
     }
 
 
-   public String getName() {
+    public String getName() {
         return name;
     }
 
-    public String getSize() {
-        return size;
+    public double getLength() {
+        return length;
+    }
+
+    public double getWidth() {
+        return width;
     }
 
     public boolean isStamped() {
-    return isStamped;
+        return isStamped;
     }
 
     @Override
     public String toString() {
         return "Stamp{" +
                 "name='" + name + '\'' +
-                ", size=" + size +
+                ", length=" + length +
+                ", width=" + width +
                 ", isStamped=" + isStamped +
                 '}';
     }
@@ -41,13 +47,14 @@ public class Stamp {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Stamp stamp = (Stamp) o;
-        return isStamped == stamp.isStamped &&
-                Objects.equals(name, stamp.name) &&
-                Objects.equals(size, stamp.size);
+        return Double.compare(stamp.length, length) == 0 &&
+                Double.compare(stamp.width, width) == 0 &&
+                isStamped == stamp.isStamped &&
+                Objects.equals(name, stamp.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, size, isStamped);
+        return Objects.hash(name, length, width, isStamped);
     }
 }
