@@ -7,9 +7,9 @@ public class Main {
         System.out.println(numbers[numbers.length-1]);
         System.out.println(numbers[1]);
         System.out.println();
-        for(int i = 0; i < numbers.length; i++){
-            if(numbers[i] != 5){
-                System.out.println(numbers[i]);
+        for(int number : numbers){
+            if(number != 5){
+                System.out.println(number);
 
             }
         }
