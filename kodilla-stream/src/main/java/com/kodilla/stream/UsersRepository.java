@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsersRepository {
-
     public static List<User> getUserList(){
         List<User> users = new ArrayList<>();
         users.add(new User("Walther White", 50, 7,"Chemists"));
