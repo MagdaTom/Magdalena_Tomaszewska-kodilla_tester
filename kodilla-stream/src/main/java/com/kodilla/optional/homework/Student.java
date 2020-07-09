@@ -32,7 +32,6 @@ public class Student {
     public int hashCode() {
         return Objects.hash(name, teacher);
     }
-
     @Override
     public String toString() {
         return "Student{" +
