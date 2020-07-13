@@ -13,11 +13,9 @@ public class Application {
         students.add(new Student("Mary", null));
 
         for (Student student : students) {
-            Optional<Teacher> optionalTeacher = Optional.ofNullable(student.getTeacher());
-            if (optionalTeacher.isPresent())
-                System.out.println("student: " + student.getName() + ", teacher: " + student.getTeacher().getName());
-            else
-                System.out.println("student: " + student.getName() + ", teacher: <undefined>");
+            System.out.println("student: " + student.getName() + ", teacher: " + Optional.ofNullable(student.getTeacher())
+                    .map(Teacher::getName)
+                    .orElse("<undefined>"));
         }
     }
 }
