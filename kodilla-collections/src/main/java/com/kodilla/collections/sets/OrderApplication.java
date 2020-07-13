@@ -4,6 +4,8 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.jar.JarOutputStream;
+import java.util.stream.Collectors;
 
 public class OrderApplication {
     public static void main(String[] args) {
@@ -16,6 +18,9 @@ public class OrderApplication {
         System.out.println(orders.size());
         for(Order order : orders)
             System.out.println(order);
+        orders.stream().map(Order::getProductName)
+                .filter(a-> a.startsWith("I"))
+                .forEach(b-> System.out.println("Product name starting with I: " + b));
 
         orders.remove(new Order("1/2019", "Iron", 1.0));
         System.out.println(orders.size());
