@@ -17,7 +17,7 @@ public class Warehouse {
     public Order getOrder(String number) throws OrderDoesntExistException {
         return orders.
                 stream()
-                .filter(a -> a.getNumber().equals(number))
+                .filter(a -> number.equals(a.getNumber()))
                 .findAny()
                 .orElseThrow(OrderDoesntExistException::new);
     }
