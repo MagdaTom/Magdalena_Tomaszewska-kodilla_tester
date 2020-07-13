@@ -26,7 +26,5 @@ public class WarehouseTestSuite {
         Order order1 = new Order("546");
         //when
         Order getOrder = warehouse.getOrder("400");
-        //then
-        //assertEquals(order1, getOrder); ->TODO Review Assertion not needed wehen Exception is thrown
     }
 }
