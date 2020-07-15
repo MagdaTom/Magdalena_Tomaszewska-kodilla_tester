@@ -7,7 +7,6 @@ import java.util.Optional;
 public class OptionalExample {
     public static void main(String[] args) {
 
-
         User user = new User("user1", 30, 100, "Test");
         User user2 = null;
 
@@ -17,8 +16,6 @@ public class OptionalExample {
         optionalUser.ifPresent(u -> System.out.println(u.getName()));
 
         optionalUser2.ifPresentOrElse(a -> System.out.println(a.getName()), () -> System.out.println("empty"));
-
-
 
     }
 }
