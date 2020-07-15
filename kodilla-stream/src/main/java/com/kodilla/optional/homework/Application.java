@@ -17,11 +17,11 @@ public class Application {
             System.out.print("student: ");
             if (student != null)
                 System.out.print(student.getName());
-                else
+            else
                 System.out.print("<undefined>");
             System.out.print(", teacher: ");
             if (student != null)
-                if(student.getTeacher() != null)
+                if (student.getTeacher() != null)
                     System.out.println(student.getTeacher().getName());
                 else
                     System.out.println("<undefined>");
