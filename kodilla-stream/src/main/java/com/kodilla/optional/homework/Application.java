@@ -38,9 +38,6 @@ public class Application {
                             .map(n -> n.getName())
                             .orElse("<undefined>"));
         }
-//        students.stream()
-//                .map(Student::getName)
-//                .forEach(a -> System.out.println("Student: " + a));
     }
 }
 
