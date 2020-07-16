@@ -9,14 +9,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InvoiceTestSuite {
 
+    Invoice invoice = new Invoice();
+    Item milk = new Item("milk", 2.50);
+    Item coffee = new Item("coffee", 7.00);
+    Item chocolate = new Item("chocolate", 10.25);
 
     @Test
     public void shouldAddItemsToInvoice() {
         //given
-        Invoice invoice = new Invoice();
-        Item milk = new Item("milk", 2.50);
-        Item coffee = new Item("coffee", 7.00);
-        Item chocolate = new Item("chocolate", 10.25);
         invoice.addItem(milk);
         invoice.addItem(coffee);
         invoice.addItem(chocolate);
@@ -30,10 +30,6 @@ class InvoiceTestSuite {
     @Test
     public void shouldGetExistingItem() {
         //given
-        Invoice invoice = new Invoice();
-        Item milk = new Item("milk", 2.50);
-        Item coffee = new Item("coffee", 7.00);
-        Item chocolate = new Item("chocolate", 10.25);
         invoice.addItem(milk);
         invoice.addItem(coffee);
         invoice.addItem(chocolate);
@@ -46,10 +42,6 @@ class InvoiceTestSuite {
     @Test
     public void shouldReturnNullWhenPassingOutOfRangeIndex() {
         //given
-        Invoice invoice = new Invoice();
-        Item milk = new Item("milk", 2.50);
-        Item coffee = new Item("coffee", 7.00);
-        Item chocolate = new Item("chocolate", 10.25);
         invoice.addItem(milk);
         invoice.addItem(coffee);
         invoice.addItem(chocolate);
@@ -62,10 +54,6 @@ class InvoiceTestSuite {
     @Test
     public void shouldReturnNullWhenPassingNegativeIndex() {
         //given
-        Invoice invoice = new Invoice();
-        Item milk = new Item("milk", 2.50);
-        Item coffee = new Item("coffee", 7.00);
-        Item chocolate = new Item("chocolate", 10.25);
         invoice.addItem(milk);
         invoice.addItem(coffee);
         invoice.addItem(chocolate);
@@ -78,10 +66,6 @@ class InvoiceTestSuite {
     public void shouldClearInvoice() {
 
         //given
-        Invoice invoice = new Invoice();
-        Item milk = new Item("milk", 2.50);
-        Item coffee = new Item("coffee", 7.00);
-        Item chocolate = new Item("chocolate", 10.25);
         invoice.addItem(milk);
         invoice.addItem(coffee);
         invoice.addItem(chocolate);
