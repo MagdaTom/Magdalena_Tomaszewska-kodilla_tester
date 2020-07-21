@@ -2,6 +2,8 @@ package devfoundry.testing;
 
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MealTestSuite {
@@ -16,6 +18,7 @@ class MealTestSuite {
 
         //then
         assertEquals(28, discountedPrice);
+        assertThat(discountedPrice, equalTo(28));
     }
 
     @Test
@@ -26,6 +29,7 @@ class MealTestSuite {
 
         //then
         assertSame(meal1, meal2);
+        assertThat(meal1, sameInstance(meal2));
     }
 
     @Test
@@ -36,6 +40,7 @@ class MealTestSuite {
 
         //then
         assertNotSame(meal1, meal2);
+        assertThat(meal1, not(sameInstance(meal2)));
     }
     @Test
     void twoMealsShouldBeEqualWhenPriceAndNameAreTheSame(){
