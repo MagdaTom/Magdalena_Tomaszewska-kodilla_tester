@@ -1,6 +1,4 @@
 package com.kodilla.execution_model.homework;
-
-
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Optional;
@@ -16,7 +14,6 @@ public class Shop {
             if (order.getValue() <= 0) {
                 return;
             }
-
             orders.add(order);
         }
     }

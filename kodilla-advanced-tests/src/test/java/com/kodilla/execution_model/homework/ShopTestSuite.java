@@ -4,7 +4,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShopTestSuite {
@@ -35,54 +37,62 @@ class ShopTestSuite {
 
     @Test
     public void shouldNotAddOrdersToTheShopIfValueIsZero() {
+        //given
         Order order4 = new Order(0.00, LocalDate.of(2020, 1, 7), "magda3");
         shop.addOrder(order4);
-
+        //when
         int numberOfOrders = shop.returnNumberOfOrders();
+        //then
         assertEquals(3, numberOfOrders);
     }
 
     @Test
     public void shouldNotAddOrdersToTheShopIfOrderIsNull() {
-        Order order4 = null;
-        shop.addOrder(order4);
-
+        //given
+        shop.addOrder(null);
+        //when
         int numberOfOrders = shop.returnNumberOfOrders();
+        //then
         assertEquals(3, numberOfOrders);
     }
 
     @Test
     public void shouldReturnOrdersWithinGivenRangeOfDates() {
+        //when
         int numberOfOrders = shop.returnOrdersWithinGivenRangeOfDates(LocalDate.of(2020, 01, 01), LocalDate.of(2020, 12, 31)).size();
-
+        //then
         assertEquals(2, numberOfOrders);
     }
 
     @Test
     public void shouldReturnTrueIfNoOrdersFoundWithinGivenRangeOfDatesInShop() {
+        //when
         boolean numberOfOrders = shop.returnOrdersWithinGivenRangeOfDates(LocalDate.of(2018, 9, 28), LocalDate.of(2019, 9, 04)).isEmpty();
-
+        //then
         assertTrue(numberOfOrders);
     }
 
     @Test
     public void shouldReturnOrdersWithinGivenRangeOfValues() {
+        //when
         int numberOfOrders = shop.returnOrdersWithinGivenRangeOfValues(0.0, 150).size();
-
+        //then
         assertEquals(2, numberOfOrders);
     }
 
     @Test
     public void shouldReturnTrueIfNoOrdersFoundWithinGivenRangeOfValues() {
+        //when
         boolean numberOfOrders = shop.returnOrdersWithinGivenRangeOfValues(400, 500).isEmpty();
-
+        //then
         assertTrue(numberOfOrders);
     }
 
     @Test
-    public void shouldReturnSumOfOrders(){
+    public void shouldReturnSumOfOrders() {
+        //when
         double sumOfOrders = shop.returnOrdersSum();
-
+        //then
         assertEquals(417, sumOfOrders);
     }
 
@@ -92,6 +102,7 @@ class ShopTestSuite {
         shop.addOrder(order2);
         shop.addOrder(order3);
     }
+
     @BeforeAll
     public static void displayIntroMessage() {
         System.out.println("Starting testing");
