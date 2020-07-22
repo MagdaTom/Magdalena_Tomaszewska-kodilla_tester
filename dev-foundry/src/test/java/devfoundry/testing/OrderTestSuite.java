@@ -1,5 +1,7 @@
 package devfoundry.testing;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -10,6 +12,19 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrderTestSuite {
+
+    private Order order;
+
+    @BeforeEach
+    void initializeOrder(){
+        System.out.println("Inside @BeforeEach method");
+        order = new Order();
+    }
+
+    @AfterEach
+    void cleanUp(){
+        order.cancel();
+    }
 
     @Test
     void testAssertArrayEquals() {
@@ -23,9 +38,6 @@ class OrderTestSuite {
 
     @Test
     void mealListShouldBeEmptyAfterCreationOfOrder() {
-        //given
-        Order order = new Order();
-
         //then
         assertTrue(order.getMeals().isEmpty());
         assertThat(order.getMeals(), empty());
@@ -39,7 +51,6 @@ class OrderTestSuite {
     void addingMealToOrderShouldIncreaseOrderSize() {
         //given
         Meal meal = new Meal(15, "Burger");
-        Order order = new Order();
 
         //when
         order.addMealToOrder(meal);
@@ -57,7 +68,6 @@ class OrderTestSuite {
     void removingMealFromOrderShouldDecreaseOrderSize() {
         //given
         Meal meal = new Meal(15, "Burger");
-        Order order = new Order();
 
         //when
         order.addMealToOrder(meal);
@@ -74,7 +84,6 @@ class OrderTestSuite {
         //given
         Meal meal1 = new Meal(15, "Burger");
         Meal meal2 = new Meal(25, "Hamburger");
-        Order order = new Order();
 
         //when
         order.addMealToOrder(meal1);
