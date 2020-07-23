@@ -59,7 +59,7 @@ class ShopTestSuite {
     @Test
     public void shouldReturnOrdersWithinGivenRangeOfDates() {
         //when
-        int numberOfOrders = shop.returnOrdersWithinGivenRangeOfDates(LocalDate.of(2020, 01, 01), LocalDate.of(2020, 12, 31)).size();
+        int numberOfOrders = shop.returnOrdersWithinGivenRangeOfDates(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 12, 31)).size();
         //then
         assertEquals(2, numberOfOrders);
     }
@@ -67,7 +67,7 @@ class ShopTestSuite {
     @Test
     public void shouldReturnTrueIfNoOrdersFoundWithinGivenRangeOfDatesInShop() {
         //when
-        boolean numberOfOrders = shop.returnOrdersWithinGivenRangeOfDates(LocalDate.of(2018, 9, 28), LocalDate.of(2019, 9, 04)).isEmpty();
+        boolean numberOfOrders = shop.returnOrdersWithinGivenRangeOfDates(LocalDate.of(2018, 9, 28), LocalDate.of(2019, 9, 4)).isEmpty();
         //then
         assertTrue(numberOfOrders);
     }
