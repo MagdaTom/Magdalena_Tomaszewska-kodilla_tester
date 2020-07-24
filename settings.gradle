@@ -7,4 +7,5 @@ include 'kodilla-collections-advanced'
 include 'kodilla-stream'
 include 'kodilla-advanced-tests'
 include 'dev-foundry'
+include 'javastart'
 
