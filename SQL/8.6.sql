@@ -1,3 +1,5 @@
+USE kodilla_tester;
+
 INSERT INTO POSTS (USER_ID, BODY)
 VALUES (4, "Can anyone help me?");
 
