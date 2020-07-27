@@ -1,0 +1,17 @@
+USE kodilla_tester;
+
+INSERT INTO POSTS (USER_ID, BODY)
+VALUES (4, "Can anyone help me?");
+
+COMMIT;
+
+UPDATE POSTS
+SET BODY = "To delete"
+WHERE ID = 10;
+
+COMMIT;
+
+DELETE FROM POSTS
+WHERE ID = 10;
+
+COMMIT;
