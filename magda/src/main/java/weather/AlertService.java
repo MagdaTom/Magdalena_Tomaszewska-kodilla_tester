@@ -24,25 +24,29 @@ public class AlertService {
     }
 
     public void addDataToTheMap(Location location, Client client) {
-        //locations.add(location);
-        this.clientAndLocationMap.put(client, locations);
+        Set<Location> locations1 = new HashSet<>();
+        if(locations.contains(location)) {
+            locations1.add(location);
+        }
+        this.clientAndLocationMap.put(client, locations1);
     }
 
     public void sendAlerts(Alert alert) {
-        this.clientAndLocationMap.entrySet().forEach(a -> a.getKey().receive(alert));
+        this.clientAndLocationMap.keySet().forEach(a-> a.receive(alert));
     }
 
     public void sendAlertsToLocation(Alert alert, Location location) {
-        this.clientAndLocationMap.entrySet().stream().
-                filter(a -> a.getValue().contains(location))
-                .forEach(c-> c.getKey().receive(alert));
-    }
 
+            this.clientAndLocationMap.entrySet().stream().filter(a -> a.getValue().contains(location))
+                    .forEach(a -> a.getKey().receive(alert));
+        }
 
 
     public void removeSubscription(Location location, Client client){
         this.clientAndLocationMap.get(client).remove(location);
+
     }
+
 
     public void removeAllSubscriptions(Client client){
         clientAndLocationMap.remove(client);

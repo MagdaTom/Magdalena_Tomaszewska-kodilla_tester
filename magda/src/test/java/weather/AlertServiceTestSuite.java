@@ -4,7 +4,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -59,19 +63,20 @@ class AlertServiceTestSuite {
         Mockito.verify(client, Mockito.times(1)).receive(alert);
     }
 
+//    @Disabled
     @Test
     public void clientSubscribedToMoreLocationsShouldReceiveAlertsToLocations() {
         alertService.addDataToTheMap(location, client);
-        alertService.addDataToTheMap(location1, client);
-        alertService.addDataToTheMap(location2, client);
+      alertService.addDataToTheMap(location1, client);
+       alertService.addDataToTheMap(location2, client);
         alertService.sendAlertsToLocation(alert, location1);
         alertService.sendAlertsToLocation(alert, location);
-        alertService.sendAlertsToLocation(alert, location2);
+       alertService.sendAlertsToLocation(alert, location2);
         Mockito.verify(client, Mockito.times(3)).receive(alert);
 
     }
 
-    @Disabled
+
     @Test
     public void clientsSubscribedToLocationsShouldReceiveAlertsToLocations() {
         alertService.addDataToTheMap(location, client);
@@ -83,12 +88,12 @@ class AlertServiceTestSuite {
 
         Mockito.verify(client, Mockito.times(1)).receive(alert);
         Mockito.verify(client1, Mockito.times(1)).receive(alert);
-        Mockito.verify(client2, Mockito.times(2)).receive(alert);
+        Mockito.verify(client2, Mockito.times(1)).receive(alert);
 
     }
 
     @Test
-    public void clientsSubscribedToLocationShouldReceiveAlertsToLocations() {
+    public void clientsSubscribedToSameLocationShouldReceiveAlertsToLocations() {
         alertService.addDataToTheMap(location, client);
         alertService.addDataToTheMap(location, client1);
         alertService.addDataToTheMap(location, client2);
@@ -103,6 +108,7 @@ class AlertServiceTestSuite {
     public void allClientsShouldReceiveAlerts() {
         alertService.addDataToTheMap(location, client);
         alertService.addDataToTheMap(location2, client1);
+        alertService.addDataToTheMap(location1, client2);
         alertService.addDataToTheMap(location1, client2);
         alertService.sendAlerts(alert);
 
@@ -122,7 +128,7 @@ class AlertServiceTestSuite {
         alertService.removeLocation(location1, location);
         assertEquals(1, alertService.getSizeOfLocations());
     }
-
+    //    @Disabled
     @Test
     void shouldBePossibleToRemoveSubscriptionFromLocation(){
         alertService.addDataToTheMap(location, client);
@@ -148,6 +154,16 @@ class AlertServiceTestSuite {
         alertService.addDataToTheMap(location2, client);
 
         Mockito.verify(client, Mockito.times(0)).receive(alert);
+    }
+
+    @Test
+    public void clientShouldNotBeAbleToAddLocationOutsideLocations(){
+        Location location3 = Mockito.mock(Location.class);
+        alertService.addDataToTheMap(location3, client);
+        alertService.sendAlertsToLocation(alert, location3);
+
+        Mockito.verify(client, Mockito.times(0)).receive(alert);
+
     }
 
 }
