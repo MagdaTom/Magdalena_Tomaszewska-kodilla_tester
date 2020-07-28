@@ -1,57 +1,46 @@
 package weather;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class AlertService {
 
+    private Map<Location, Set<Client>> clientAndLocationMap = new HashMap<>();
 
-    private Set<Location> locations = new HashSet<>();
-    private Map<Client, Set<Location>> clientAndLocationMap = new HashMap<>();
-    private Location location;
-
-    public void addLocation(Location ... locations) {
-        for (Location l : locations)
-            this.locations.add(l);
-    }
-
-    public void removeLocation(Location ... locations){
-        for (Location l : locations)
-            this.locations.remove(l);
-    }
-
-    public int getSizeOfLocations(){
-        return locations.size();
-    }
 
     public void addDataToTheMap(Location location, Client client) {
-        Set<Location> locations1 = new HashSet<>();
-        if(locations.contains(location)) {
-            locations1.add(location);
+        if (this.clientAndLocationMap.containsKey(location)) {
+            this.clientAndLocationMap.get(location).add(client);
+        } else {
+            Set<Client> clients = new HashSet<>();
+            clients.add(client);
+            this.clientAndLocationMap.put(location, clients);
         }
-        this.clientAndLocationMap.put(client, locations1);
     }
 
-    public void sendAlerts(Alert alert) {
-        this.clientAndLocationMap.keySet().forEach(a-> a.receive(alert));
+    public void removeSubscription(Location location, Client client) {
+        if (this.clientAndLocationMap.containsKey(location)) {
+            this.clientAndLocationMap.get(location).remove(client);
+        }
+    }
+
+    public void removeAllSubscriptions(Client client) {
+        clientAndLocationMap.entrySet().forEach(a -> a.getValue().remove(client));
     }
 
     public void sendAlertsToLocation(Alert alert, Location location) {
-
-            this.clientAndLocationMap.entrySet().stream().filter(a -> a.getValue().contains(location))
-                    .forEach(a -> a.getKey().receive(alert));
+        if (this.clientAndLocationMap.containsKey(location)) {
+            clientAndLocationMap.get(location).forEach(a -> a.receive(alert));
         }
-
-
-    public void removeSubscription(Location location, Client client){
-        this.clientAndLocationMap.get(client).remove(location);
-
     }
 
-
-    public void removeAllSubscriptions(Client client){
-        clientAndLocationMap.remove(client);
+    public void sendAlertToGroup(Alert alert) {
+        this.clientAndLocationMap.values().forEach(a -> a.forEach(b -> b.receive(alert)));
     }
 
+    public void removeLocation(Location location){
+        this.clientAndLocationMap.remove(location);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -71,6 +60,7 @@ public class AlertService {
         return "AlertService{" +
                 "clientAndLocationMap=" + clientAndLocationMap +
                 '}';
+
     }
 
 
