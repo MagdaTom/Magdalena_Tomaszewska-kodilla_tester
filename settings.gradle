@@ -9,4 +9,6 @@ include 'kodilla-advanced-tests'
 include 'dev-foundry'
 include 'javastart'
 include 'kodilla.spring.basic'
+include 'kodilla-spring-basic'
+include 'kodilla-spring-basics'
 
