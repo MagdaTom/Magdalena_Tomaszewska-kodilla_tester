@@ -4,8 +4,19 @@ import java.util.Objects;
 
 public class Meal {
 
+    private int quantity;
     private int price;
     private String name;
+
+    public Meal(int quantity, int price, String name) {
+        this.quantity = quantity;
+        this.price = price;
+        this.name = name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
 
     public Meal(int price) {
         this.price = price;
