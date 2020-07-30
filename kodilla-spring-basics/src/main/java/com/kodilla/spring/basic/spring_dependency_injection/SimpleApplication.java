@@ -6,11 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class SimpleApplication {
 
-//    @Autowired
-    private SkypeMessageService messageService;
 
-    @Autowired
-    public void setMessageService(SkypeMessageService messageService) {
+    private MessageService messageService;
+
+    public SimpleApplication(MessageService messageService) {
         this.messageService = messageService;
     }
 
