@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SimpleApplication {
 
-
+//gdy nie mozna przez primary nad polem - @Resource(name = "skypeMessageService)
     private MessageService messageService;
 
     public SimpleApplication(MessageService messageService) {
