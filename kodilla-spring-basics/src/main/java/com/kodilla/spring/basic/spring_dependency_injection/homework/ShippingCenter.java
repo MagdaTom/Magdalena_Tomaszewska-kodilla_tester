@@ -8,11 +8,13 @@ import javax.annotation.Resource;
 @Component
 public class ShippingCenter {
 
-    @Resource(name = "deliveryServiceEurope")
     DeliveryService deliveryService;
-    @Resource(name = "notificationServiceEurope")
     NotificationService notificationService;
 
+    public ShippingCenter(DeliveryService deliveryService, NotificationService notificationService) {
+        this.deliveryService = deliveryService;
+        this.notificationService = notificationService;
+    }
 
     public String sendPackage(String address, double weight) {
         if (deliveryService.deliverPackage(address, weight)) {
