@@ -14,7 +14,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Display bean = context.getBean(Display.class);
         Double number = bean.display(5);
-        Assertions.assertEquals(java.util.Optional.of(5.0), java.util.Optional.of(number));
+        Assertions.assertEquals(5, number, 0.01);
     }
 
     @Test
@@ -22,7 +22,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.add(5, 6);
-        Assertions.assertEquals(java.util.Optional.of(11.0), java.util.Optional.of(result));
+        Assertions.assertEquals(11.0, result, 0.01);
     }
 
     @Test
@@ -30,7 +30,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.add(-5, -6);
-        Assertions.assertEquals(java.util.Optional.of(-11.0), java.util.Optional.of(result));
+        Assertions.assertEquals(-11.0, result, 0.01);
     }
 
     @Test
@@ -38,7 +38,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.add(5, 0);
-        Assertions.assertEquals(java.util.Optional.of(5.0), java.util.Optional.of(result));
+        Assertions.assertEquals(5.0, result, 0.01);
     }
 
     @Test
@@ -46,7 +46,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.subtract(5, 6);
-        Assertions.assertEquals(java.util.Optional.of(-1.0), java.util.Optional.of(result));
+        Assertions.assertEquals(-1.0, result, 0.01);
     }
 
     @Test
@@ -54,7 +54,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.subtract(-5, -6);
-        Assertions.assertEquals(java.util.Optional.of(1.0), java.util.Optional.of(result));
+        Assertions.assertEquals(1.0, result, 0.01);
     }
 
     @Test
@@ -62,7 +62,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.subtract(0, 6);
-        Assertions.assertEquals(java.util.Optional.of(-6.0), java.util.Optional.of(result));
+        Assertions.assertEquals(-6.0, result, 0.01);
     }
 
     @Test
@@ -70,7 +70,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.multiply(5, 6);
-        Assertions.assertEquals(java.util.Optional.of(30.0), java.util.Optional.of(result));
+        Assertions.assertEquals(30.0, result, 0.01);
     }
 
     @Test
@@ -78,7 +78,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.multiply(-5, -6);
-        Assertions.assertEquals(java.util.Optional.of(30.0), java.util.Optional.of(result));
+        Assertions.assertEquals(30.0, result, 0.01);
     }
 
     @Test
@@ -86,7 +86,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.multiply(-5, 6);
-        Assertions.assertEquals(java.util.Optional.of(-30.0), java.util.Optional.of(result));
+        Assertions.assertEquals(-30.0, result, 0.01);
     }
 
     @Test
@@ -94,7 +94,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.multiply(5, 0);
-        Assertions.assertEquals(java.util.Optional.of(0.0), java.util.Optional.of(result));
+        Assertions.assertEquals(0.0, result, 0.01);
     }
 
     @Test
@@ -102,7 +102,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.divide(6, 3);
-        Assertions.assertEquals(java.util.Optional.of(2.0), java.util.Optional.of(result));
+        Assertions.assertEquals(2.0, result, 0.01);
     }
 
     @Test
@@ -110,7 +110,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.divide(-6, -3);
-        Assertions.assertEquals(java.util.Optional.of(2.0), java.util.Optional.of(result));
+        Assertions.assertEquals(2.0, result, 0.01);
     }
 
     @Test
@@ -118,7 +118,7 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.divide(-12, 5);
-        Assertions.assertEquals(java.util.Optional.of(-2.4), java.util.Optional.of(result));
+        Assertions.assertEquals(-2.4, result, 0.01);
     }
 
     @Test
@@ -126,6 +126,6 @@ class CalculatorTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Calculator bean = context.getBean(Calculator.class);
         Double result = bean.divide(-12, 0);
-        Assertions.assertEquals(java.util.Optional.of(0.0), java.util.Optional.of(result));
+        Assertions.assertEquals(0.0, result, 0.01);
     }
 }
