@@ -4,168 +4,140 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
+
 import org.mockito.Mockito;
 
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
 
 
 class AlertServiceTestSuite {
 
-    AlertService alertService = new AlertService();
-    Client client = Mockito.mock(Client.class);
-    Client client1 = Mockito.mock(Client.class);
-    Client client2 = Mockito.mock(Client.class);
-    Alert alert = Mockito.mock(Alert.class);
-    Location location = Mockito.mock(Location.class);
-    Location location1 = Mockito.mock(Location.class);
-    Location location2 = Mockito.mock(Location.class);
+//
+//    AlertService alertService = new AlertService();//TODO move to methods
+//    Client client = Mockito.mock(Client.class);
+//    Client client1 = Mockito.mock(Client.class);
+//    Client client2 = Mockito.mock(Client.class);
+//    Alert alert = Mockito.mock(Alert.class);
+//    Location location = Mockito.mock(Location.class);
+//    Location location1 = Mockito.mock(Location.class);
+//    Location location2 = Mockito.mock(Location.class);
 
-    @BeforeEach
-    public void createListOfLocations(){
-        alertService.addLocation(location, location1, location2);
-    }
-
-    @AfterEach
-    public void removeListOfLocations(){
-        alertService.removeLocation(location, location1, location2);
-    }
-
-    @Test
-    public void notSubscribedClientShouldNotReceiveAlert(){
-        alertService.sendAlerts(alert);
-        Mockito.verify(client, Mockito.never()).receive(alert);
-    }
-
-    @Test
-    public void subscribedClientShouldReceiveAlert(){
-        alertService.addDataToTheMap(location, client);
-        alertService.sendAlerts(alert);
-        Mockito.verify(client, Mockito.times(1)).receive(alert);
-    }
-
-    @Test
-    public void clientSubscribedToMoreLocationsShouldReceiveOneGeneralAlert(){
-        alertService.addDataToTheMap(location, client);
-        alertService.addDataToTheMap(location1, client);
-        alertService.addDataToTheMap(location2, client);
-        alertService.sendAlerts(alert);
-        Mockito.verify(client, Mockito.times(1)).receive(alert);
-    }
-
-    @Test
-    public void clientSubscribedToTheSameLocationShouldReceiveOneAlert(){
-        alertService.addDataToTheMap(location, client);
-        alertService.addDataToTheMap(location, client);
-        alertService.sendAlertsToLocation(alert, location);
-        Mockito.verify(client, Mockito.times(1)).receive(alert);
-    }
-
+//    @Test
+//    public void notSubscribedClientShouldNotReceiveAlert() {
+//        alertService.sendAlertToGroup(alert);
+//        Mockito.verify(client, Mockito.never()).receive(alert);
+//    }
+//
+//    @Test
+//    public void subscribedClientShouldReceiveGroupAlert() {
+//        alertService.addDataToTheMap(client, locationsA);
+//        alertService.sendAlertToGroup(alert);
+//        Mockito.verify(client, Mockito.times(1)).receive(alert);
+//
+//    }
+//
+//    @Test
+//    public void clientSubscribedToMoreLocationsShouldReceiveOneGroupAlert() {
+//        alertService.addDataToTheMap(client, locationsA);
+//        alertService.sendAlertToGroup(alert);
+//        Mockito.verify(client, Mockito.times(1)).receive(alert);
+//    }
+//
+//    @Test
+//    public void clientsShouldReceiveGroupAlert() {
+//        alertService.addDataToTheMap(client, locationsA);
+//        alertService.addDataToTheMap(client1, locationsA);
+//        alertService.sendAlertToGroup(alert);
+//
+//        Mockito.verify(client, Mockito.times(1)).receive(alert);
+//        Mockito.verify(client1, Mockito.times(1)).receive(alert);
+//
+//
+//    }
+//
 //    @Disabled
-    @Test
-    public void clientSubscribedToMoreLocationsShouldReceiveAlertsToLocations() {
-        alertService.addDataToTheMap(location, client);
-      alertService.addDataToTheMap(location1, client);
-       alertService.addDataToTheMap(location2, client);
-        alertService.sendAlertsToLocation(alert, location1);
-        alertService.sendAlertsToLocation(alert, location);
-       alertService.sendAlertsToLocation(alert, location2);
-        Mockito.verify(client, Mockito.times(3)).receive(alert);
-
-    }
-
-
-    @Test
-    public void clientsSubscribedToLocationsShouldReceiveAlertsToLocations() {
-        alertService.addDataToTheMap(location, client);
-        alertService.addDataToTheMap(location1, client1);
-        alertService.addDataToTheMap(location2, client2);
-        alertService.sendAlertsToLocation(alert, location);
-        alertService.sendAlertsToLocation(alert, location1);
-        alertService.sendAlertsToLocation(alert, location2);
-
-        Mockito.verify(client, Mockito.times(1)).receive(alert);
-        Mockito.verify(client1, Mockito.times(1)).receive(alert);
-        Mockito.verify(client2, Mockito.times(1)).receive(alert);
-
-    }
-
-    @Test
-    public void clientsSubscribedToSameLocationShouldReceiveAlertsToLocations() {
-        alertService.addDataToTheMap(location, client);
-        alertService.addDataToTheMap(location, client1);
-        alertService.addDataToTheMap(location, client2);
-        alertService.sendAlertsToLocation(alert, location);
-
-        Mockito.verify(client, Mockito.times(1)).receive(alert);
-        Mockito.verify(client1, Mockito.times(1)).receive(alert);
-        Mockito.verify(client2, Mockito.times(1)).receive(alert);
-    }
-
-    @Test
-    public void allClientsShouldReceiveAlerts() {
-        alertService.addDataToTheMap(location, client);
-        alertService.addDataToTheMap(location2, client1);
-        alertService.addDataToTheMap(location1, client2);
-        alertService.addDataToTheMap(location1, client2);
-        alertService.sendAlerts(alert);
-
-        Mockito.verify(client, Mockito.times(1)).receive(alert);
-        Mockito.verify(client1, Mockito.times(1)).receive(alert);
-        Mockito.verify(client2, Mockito.times(1)).receive(alert);
-
-    }
-
-    @Test
-    void shouldReturnCorrectSizeOfLocationsSet(){
-        assertEquals(3, alertService.getSizeOfLocations());
-    }
-
-    @Test
-    void shouldReturnCorrectSizeOfLocationsAfterRemoval() {
-        alertService.removeLocation(location1, location);
-        assertEquals(1, alertService.getSizeOfLocations());
-    }
-    //    @Disabled
-    @Test
-    void shouldBePossibleToRemoveSubscriptionFromLocation(){
-        alertService.addDataToTheMap(location, client);
-        alertService.addDataToTheMap(location1, client);
-        alertService.addDataToTheMap(location2, client);
-
-        alertService.removeSubscription(location1, client);
-        alertService.sendAlertsToLocation(alert,location);
-        alertService.sendAlertsToLocation(alert,location1);
-        alertService.sendAlertsToLocation(alert,location2);
-        Mockito.verify(client, Mockito.times(2)).receive(alert);
-    }
-
-    @Test
-    void shouldBePossibleToRemoveAllSubscriptionFromLocation(){
-        alertService.addDataToTheMap(location, client);
-        alertService.addDataToTheMap(location1, client);
-        alertService.addDataToTheMap(location2, client);
-
-        alertService.removeAllSubscriptions(client);
-        alertService.addDataToTheMap(location, client);
-        alertService.addDataToTheMap(location1, client);
-        alertService.addDataToTheMap(location2, client);
-
-        Mockito.verify(client, Mockito.times(0)).receive(alert);
-    }
-
-    @Test
-    public void clientShouldNotBeAbleToAddLocationOutsideLocations(){
-        Location location3 = Mockito.mock(Location.class);
-        alertService.addDataToTheMap(location3, client);
-        alertService.sendAlertsToLocation(alert, location3);
-
-        Mockito.verify(client, Mockito.times(0)).receive(alert);
-
-    }
+//    @Test
+//    public void clientSubscribedToTheSameLocationShouldReceiveOneAlertToLocation() {
+//        Set<Location> locationsA = alertService.createSetOfLocationsForClient(location1, location2);
+//        alertService.addDataToTheMap(client, locationsA);
+//        alertService.addDataToTheMap(client, locationsA);
+//        alertService.sendAlertsToLocation(alert, location1);
+//        alertService.sendAlertsToLocation(alert, location2);
+//        Mockito.verify(client, Mockito.times(2)).receive(alert);
+//    }
+//
+//    @Disabled
+//    @Test
+//    public void clientSubscribedToMoreLocationsShouldReceiveAlertsToLocations() {
+//        Set<Location> locationsA = alertService.createSetOfLocationsForClient(location1, location2);
+//        alertService.addDataToTheMap(client, locationsA);
+//        alertService.sendAlertsToLocation(alert, location1);
+//        alertService.sendAlertsToLocation(alert, location2);
+//        Mockito.verify(client, Mockito.times(2)).receive(alert);
+//    }
+//
+//    @Disabled
+//    @Test
+//    public void clientsSubscribedToLocationsShouldReceiveAlertsToLocations() {
+//        Set<Location> locationsA = alertService.createSetOfLocationsForClient(location1, location2);
+//        Set<Location> locationsB = alertService.createSetOfLocationsForClient(location, location2);
+//        alertService.addDataToTheMap(client, locationsA);
+//        alertService.addDataToTheMap(client1, locationsB);
+//        alertService.sendAlertsToLocation(alert, location);
+//        alertService.sendAlertsToLocation(alert, location1);
+//        alertService.sendAlertsToLocation(alert, location2);
+//        Mockito.verify(client, Mockito.times(2)).receive(alert);
+//      Mockito.verify(client1, Mockito.times(2)).receive(alert);
+//
+//
+//    }
+//
+//    @Disabled
+//    @Test
+//    public void clientsSubscribedToSameLocationShouldReceiveAlertsToLocations() {
+//        Set<Location> locationsA = alertService.createSetOfLocationsForClient(location1, location2);
+//        alertService.addDataToTheMap(client, locationsA);
+//        alertService.addDataToTheMap(client1, locationsA);
+//        alertService.sendAlertsToLocation(alert, location1);
+//        alertService.sendAlertsToLocation(alert, location2);
+//        Mockito.verify(client, Mockito.times(2)).receive(alert);
+//        Mockito.verify(client1, Mockito.times(2)).receive(alert);
+//    }
+//
+//
+//    @Test
+//    void shouldReturnCorrectSizeOfLocationsSet() {
+//
+//        assertEquals(3, alertService.getSizeOfLocations());
+//
+//    }
+//
+//    @Test
+//    void shouldReturnCorrectSizeOfLocationsAfterRemoval() {
+//        alertService.removeLocation(location1, location);
+//        assertEquals(1, alertService.getSizeOfLocations());
+//    }
+//
+//    @Disabled
+//    @Test
+//    void shouldBePossibleToRemoveSubscriptionFromLocation() {
+//        Set<Location> locationsA = alertService.createSetOfLocationsForClient(location1, location2);
+//        alertService.addDataToTheMap(client, locationsA);
+//        alertService.removeSubscription(location1, client);
+//        Mockito.verify(client, Mockito.times(1)).receive(alert);
+//    }
+//
+//
+//    @Test
+//    void shouldBePossibleToRemoveAllSubscriptionFromLocation() {
+//        Set<Location> locationsA = alertService.createSetOfLocationsForClient(location1, location2);
+//        alertService.addDataToTheMap(client, locationsA);
+//        alertService.removeAllSubscriptions(client);
+//
+//        Mockito.verify(client, Mockito.times(0)).receive(alert);
+//    }
 
 }
-
-
