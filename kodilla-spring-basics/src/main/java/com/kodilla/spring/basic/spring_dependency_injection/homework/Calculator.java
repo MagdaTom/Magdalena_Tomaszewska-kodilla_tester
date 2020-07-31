@@ -12,28 +12,24 @@ public class Calculator {
     }
 
     public double add(double a, double b) {
-        display.display(a);
-        display.display(b);
-        return a + b;
+        double result = a + b;
+        return display.display(result);
     }
 
     public double subtract(double a, double b) {
-        display.display(a);
-        display.display(b);
-        return a - b;
+        double result = a - b;
+        return display.display(result);
     }
 
     public double multiply(double a, double b) {
-        display.display(a);
-        display.display(b);
-        return a * b;
+        double result = a * b;
+        return display.display(result);
     }
 
     public double divide(double a, double b) {
+        double result = a/b;
         if(b != 0) {
-            display.display(a);
-            display.display(b);
-            return a / b;
+            return display.display(result);
         }else{
             System.out.print("Don't divide by: ");
             return 0.0;
