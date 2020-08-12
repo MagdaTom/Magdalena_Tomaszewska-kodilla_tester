@@ -1,4 +1,4 @@
-package fizzBuzz;
+package arrays_iterate.fizzBuzz;
 
 import java.util.stream.IntStream;
 
