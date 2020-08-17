@@ -14,23 +14,23 @@ import java.time.LocalTime;
 @SpringBootTest
 public class ClockTestSuite{
 
-    @Autowired
-    private Clock time1;
-    @Autowired
-    private Clock time2;
-    @Autowired
-    private Clock time3;
+//    @Autowired
+//    private Clock time1;
+//    @Autowired
+//    private Clock time2;
+//    @Autowired
+//    private Clock time3;
 
     @RepeatedTest(5)
     public void shouldReturnCurrentTime() throws InterruptedException {
-        /*
+
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         Clock time1 = context.getBean(Clock.class);
-        Thread.sleep(10);
+
         Clock time2 = context.getBean(Clock.class);
-        Thread.sleep(10);
+
         Clock time3 = context.getBean(Clock.class);
-        */
+
 
         LocalTime one = time1.getTime();
         LocalTime two = time2.getTime();
