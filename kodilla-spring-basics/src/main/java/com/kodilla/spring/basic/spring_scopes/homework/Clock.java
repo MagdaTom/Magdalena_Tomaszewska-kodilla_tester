@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
+import java.util.Objects;
 
 @Component
 @Scope("prototype")
@@ -13,6 +14,22 @@ public class Clock {
 
     public Clock() {
         this.time = LocalTime.now();
-        System.out.println(time);
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Clock clock = (Clock) o;
+        return Objects.equals(time, clock.time);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(time);
     }
 }
