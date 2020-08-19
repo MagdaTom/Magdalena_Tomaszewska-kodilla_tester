@@ -11,4 +11,5 @@ include 'javastart'
 include 'kodilla.spring.basic'
 include 'kodilla-spring-basic'
 include 'kodilla-spring-basics'
+include 'kodilla-rest-api'
 
