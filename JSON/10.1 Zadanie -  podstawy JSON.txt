@@ -1,0 +1,25 @@
+{
+"carName":"Fiesta",
+"carType":"Ford",
+"carSeats":[
+	{
+	"material":"nylon",
+	"colour":"black"
+	},
+	{
+	"material":"leather",
+	"colour":"grey"
+	},
+        {
+	"material":"polyester",
+	"colour":"orange"
+	},
+	{
+	"material":"vinyl",
+	"colour":"green"
+	}
+	],
+"engineCapacity":2.0
+}
+
+
