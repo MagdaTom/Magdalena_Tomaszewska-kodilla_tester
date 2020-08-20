@@ -5,7 +5,7 @@ import java.time.LocalTime;
 public class Application {
     public static void main(String[] args) {
         CarFactory carFactory = new CarFactory();
-       System.out.println(carFactory.returnCar(Season.SUMMER, LocalTime.parse("10:00:00")));
+       System.out.println(carFactory.returnCar(Season.SUMMER, LocalTime.parse("10:00:00")));//TODO remove arguments
 
     }
 }
