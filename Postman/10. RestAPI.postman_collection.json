@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "5166fefc-6092-4ece-9e8c-768810fce51d",
+		"name": "10. RestAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "10.2 new post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2fb88b81670f493f49d227ec0950292919464e51091bb25a5f6e1dbdc7c29ecd",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"user_id\": 1365,\r\n            \"title\": \"New post.\",\r\n            \"body\": \"Hi.\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gorest.co.in/public-api/posts",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public-api",
+						"posts"
+					]
+				},
+				"description": "adding new post to the user"
+			},
+			"response": []
+		},
+		{
+			"name": "10.3 remove the book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2fb88b81670f493f49d227ec0950292919464e51091bb25a5f6e1dbdc7c29ecd",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{           \"title\": \"Don Quixote\",\r\n            \"author\": \"Miguel de Cervantes\" \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
