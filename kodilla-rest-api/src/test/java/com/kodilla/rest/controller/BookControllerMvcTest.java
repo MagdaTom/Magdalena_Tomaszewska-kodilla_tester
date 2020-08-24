@@ -62,7 +62,6 @@ public class BookControllerMvcTest {
         //when & then
         mockMvc.perform(MockMvcRequestBuilders.post("/books").contentType(MediaType.APPLICATION_JSON)
                 .content(bookJson))
-                .andDo(print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title").value("title1"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.author").value("author1"))
