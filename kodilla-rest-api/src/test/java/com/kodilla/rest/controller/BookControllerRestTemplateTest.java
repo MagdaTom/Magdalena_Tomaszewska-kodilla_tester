@@ -69,17 +69,26 @@ public class BookControllerRestTemplateTest {
     }
 
     @Test
-    public void delete() {
-        booksList.remove(book);
-        String request = gson.toJson(book);
+    public void testDelete() {
+        BookDto book2 = new BookDto("title3", "author3");
+        BookDto book3 = new BookDto("title4", "author4");
+        booksList.add(book2);
+        booksList.add(book3);
+        booksList.remove(book2);
+        String request = gson.toJson(book2);
+        String request2 = gson.toJson(book3);
+        String request3 = gson.toJson(book2);
         HttpEntity<String> entity = createRequestEntity(request, "application/json");
-        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8080/books", HttpMethod.DELETE, entity, String.class);
+        HttpEntity<String> entity1 = createRequestEntity(request2, "application/json");
+        HttpEntity<String> entity3 = createRequestEntity(request3, "application/json");
+        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8080/books", HttpMethod.POST, entity, String.class);
         System.out.println(response);
         Assertions.assertEquals(200, response.getStatusCodeValue());
-        ResponseEntity<String> response2 = restTemplate.exchange("http://localhost:8080/books", HttpMethod.GET, null, String.class);
+        ResponseEntity<String> response2 = restTemplate.exchange("http://localhost:8080/books", HttpMethod.POST, entity1, String.class);
         System.out.println(response2);
         Assertions.assertEquals(200, response2.getStatusCodeValue());
-        Assertions.assertNotNull(response2.getBody());
+        ResponseEntity<String> response3 = restTemplate.exchange("http://localhost:8080/books", HttpMethod.DELETE, entity3, String.class);
+        Assertions.assertEquals(200, response3.getStatusCodeValue());
     }
 }
 
