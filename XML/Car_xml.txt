@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<veh:car xmlns:veh="http://kodilla.com"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://kodilla.com vehicle_XSD.xsd">
+    <veh:brand>honda</veh:brand>
+    <veh:model>civic</veh:model>
+    <veh:engine>2.0</veh:engine>
+    <veh:year>2015</veh:year>
+    <veh:manualGearbox>true</veh:manualGearbox>
+</veh:car>	
+	
+
