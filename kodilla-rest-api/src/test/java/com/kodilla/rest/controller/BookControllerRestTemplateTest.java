@@ -26,7 +26,12 @@ public class BookControllerRestTemplateTest {
 
     @BeforeAll
     public static void init() {
-        SpringApplication.run(KodillaRestApiApplication.class);
+        KodillaRestApiApplication.main(new String[0]);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
