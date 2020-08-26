@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,11 +91,10 @@ public class BookControllerRestTemplateTest {
         ResponseEntity<String> response3 = restTemplate.exchange("http://localhost:8080/books", HttpMethod.DELETE, entity3, String.class);
         Assertions.assertEquals(200, response3.getStatusCodeValue());
     }
+
+    @AfterAll
+    public static void exit(){
+        KodillaRestApiApplication.stop();
+    }
+
 }
-
-//    @AfterAll
-//    public static void exit(){
-//        SpringApplication.run(KodillaRestApiApplication.class).close();
-//    }
-
-
