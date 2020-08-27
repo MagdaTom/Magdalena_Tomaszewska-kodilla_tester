@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class KodillaExitCodeApplication {
 
     public static void main(String[] args) {
-        System.exit(SpringApplication.exit(SpringApplication.run(KodillaExitCodeApplication.class, args)));
+        SpringApplication.run(KodillaRestApiApplication.class, args).close();
     }
 
 }

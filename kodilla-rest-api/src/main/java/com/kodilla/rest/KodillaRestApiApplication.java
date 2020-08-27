@@ -12,8 +12,8 @@ public class KodillaRestApiApplication {
 
     public static void main(String[] args) {
         context = SpringApplication.run(KodillaRestApiApplication.class, args);
-    }
 
+    }
 
     public static void stop(){
         context.stop();
