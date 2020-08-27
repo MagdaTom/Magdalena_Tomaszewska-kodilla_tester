@@ -1,0 +1,13 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <SOAP-ENV:Fault>
+            <faultcode>SOAP-ENV:Server</faultcode>
+            <faultstring xml:lang="en">No adapter for endpoint [public com.kodilla.courses.soap.GetCourseResponse
+                com.kodilla.soap.ws.CourseEndpoint.getCourse(com.kodilla.courses.soap.GetCourseRequest)]: Is your
+                endpoint annotated with @Endpoint, or does it implement a supported interface like MessageHandler or
+                PayloadEndpoint?
+            </faultstring>
+        </SOAP-ENV:Fault>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

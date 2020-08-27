@@ -12,4 +12,5 @@ include 'kodilla.spring.basic'
 include 'kodilla-spring-basic'
 include 'kodilla-spring-basics'
 include 'kodilla-rest-api'
+include 'kodilla-soap'
 
