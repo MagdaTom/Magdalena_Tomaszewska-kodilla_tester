@@ -13,4 +13,7 @@ include 'kodilla-spring-basic'
 include 'kodilla-spring-basics'
 include 'kodilla-rest-api'
 include 'kodilla-soap'
+include 'ChromeDev'
+include 'kodilla-selenium'
+include 'kodilla-google-selenium'
 
