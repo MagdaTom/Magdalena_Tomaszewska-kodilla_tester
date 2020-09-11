@@ -13,6 +13,7 @@ public class AllegroTestingApp {
         System.setProperty("webdriver.chrome.driver","C:\\selenium-drivers\\Chrome\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://allegro.pl");
+        driver.manage().window().maximize();
 
         WebElement button = driver.findElement(By.cssSelector("button[data-role*='accept']"));
         button.click();
