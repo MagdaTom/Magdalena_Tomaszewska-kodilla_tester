@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.List;
 
 public class GoogleSearch extends AbstractPage{
@@ -30,11 +28,10 @@ public class GoogleSearch extends AbstractPage{
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to("http://www.google.com");
-
         driver.switchTo().frame(0);
         WebElement agreeButton = driver.findElement(By.xpath("//*[@id=\"introAgreeButton\"]/span/span"));
         agreeButton.click();
-//        driver.switchTo().defaultContent();
+        driver.switchTo().defaultContent();
 
         PageFactory.initElements(driver, GoogleSearch.class);
         inputField.sendKeys("Kodilla");
