@@ -16,4 +16,5 @@ include 'kodilla-soap'
 include 'ChromeDev'
 include 'kodilla-selenium'
 include 'kodilla-google-selenium'
+include 'kodilla-cucumber'
 
