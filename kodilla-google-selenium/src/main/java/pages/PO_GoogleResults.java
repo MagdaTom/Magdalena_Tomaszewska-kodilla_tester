@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 public class PO_GoogleResults extends AbstractPage {
@@ -35,6 +35,7 @@ public class PO_GoogleResults extends AbstractPage {
     }
 
     public void clickDrawnLink() {
-        results.get(drawnLinkIndex).click();
+        Optional.ofNullable(results.get(drawnLinkIndex)).get().click();
+        //results.get(drawnLinkIndex).click();
     }
 }
