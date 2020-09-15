@@ -1,40 +1,44 @@
 package seasonchecker;
 
 import io.cucumber.java8.En;
+import org.junit.Assert;
+
+import java.time.MonthDay;
 
 public class IsItSummerSteps implements En {
 
-    public IsItSummerSteps(){
-    Given("today is last day of December",() ->
+    private MonthDay today;
+    private String answer;
 
-    {
+    public IsItSummerSteps() {
+        Given("today is last day of December", () -> {
+            this.today = MonthDay.of(12, 31);
+        });
 
-        // Write code here that turns the phrase above into concrete actions
+        Given("today is first day of August", () -> {
+            this.today = MonthDay.of(9, 1);
+        });
 
-        throw new io.cucumber.java8.PendingException();
+        Given("today is 10th day of February", () -> {
+        this.today = MonthDay.of(02, 10);
+        });
 
-    });
+        Given("today is 20th day of June", () -> {
+        this.today = MonthDay.of(06,20);
+        });
+
+        Given("today is 21st day of June", () -> {
+           this.today = MonthDay.of(06,21);
+        });
+
+        When("I ask whether it's Summer", () -> {
+            SeasonChecker seasonChecker = new SeasonChecker();
+            this.answer = seasonChecker.checkIfSummer(this.today);
+        });
 
 
-    When("I ask whether it's Summer",() ->
-
-    {
-
-        // Write code here that turns the phrase above into concrete actions
-
-        throw new io.cucumber.java8.PendingException();
-
-    });
-
-
-    Then("I should be told {string}",(String string) ->
-
-    {
-
-        // Write code here that turns the phrase above into concrete actions
-
-        throw new io.cucumber.java8.PendingException();
-
-    });
-}
+        Then("I should be told {string}", (String string) -> {
+            Assert.assertEquals(string, this.answer);
+        });
+    }
 }
