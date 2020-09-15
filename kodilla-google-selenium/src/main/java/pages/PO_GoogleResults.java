@@ -21,21 +21,20 @@ public class PO_GoogleResults extends AbstractPage {
         PageFactory.initElements(this.driver, this);
     }
 
-
     public List<WebElement> getResults() {
         return results;
     }
 
-    public void clickRandomLink(){
+    public String getDrawnLink() {
         PageFactory.initElements(driver, PO_GoogleResults.class);
         Random random = new Random();
         drawnLinkIndex = random.nextInt(results.size());
         System.out.println("Index: " + drawnLinkIndex);
-        results.get(drawnLinkIndex).click();
+        System.out.println(results.get(drawnLinkIndex).findElement(By.cssSelector("a[href*='http']")).getAttribute("href"));
+        return results.get(drawnLinkIndex).findElement(By.cssSelector("a[href*='http']")).getAttribute("href");
     }
 
-    public String getDrawnLink() {
-        return results.get(drawnLinkIndex).findElement(By.cssSelector("a[href*='http']")).getAttribute("href");
-
+    public void clickDrawnLink() {
+        results.get(drawnLinkIndex).click();
     }
 }

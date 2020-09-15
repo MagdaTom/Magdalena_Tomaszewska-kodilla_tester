@@ -15,6 +15,7 @@ public class PO_RandomGoogleResult extends AbstractPage {
     }
 
     public String getUrl() {
+        System.out.println(driver.getCurrentUrl());
         return driver.getCurrentUrl();
     }
 }

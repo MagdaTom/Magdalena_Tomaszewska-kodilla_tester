@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,10 +18,8 @@ public class PO_GoogleSearch extends AbstractPage {
     @FindBy(css = "input[value='Szukaj w Google']")
     static List<WebElement> searchButton;
 
-
     private static PO_GoogleResults googleResults;
     private static PO_RandomGoogleResult randomGoogleResult;
-
 
     public PO_GoogleSearch(WebDriver driver) {
         super(driver, "http://www.google.com");
