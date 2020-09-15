@@ -1,9 +1,6 @@
 package pages;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -39,6 +36,7 @@ public class TestGoogle {
         Assert.assertNotNull(results);
         Assert.assertThat(results, hasSize(6));
     }
+
 
     @Test
     public void shouldClickTheDrawnLink() {
