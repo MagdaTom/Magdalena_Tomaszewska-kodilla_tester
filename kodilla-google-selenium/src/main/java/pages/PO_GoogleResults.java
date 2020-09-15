@@ -1,0 +1,41 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
+import java.util.Random;
+
+public class PO_GoogleResults extends AbstractPage {
+
+    private int drawnLinkIndex;
+
+    @FindBy(css = "div[class='g']")
+    private List<WebElement> results;
+
+    public PO_GoogleResults(WebDriver driver) {
+        super(driver, "");
+        PageFactory.initElements(this.driver, this);
+    }
+
+
+    public List<WebElement> getResults() {
+        return results;
+    }
+
+    public void clickRandomLink(){
+        PageFactory.initElements(driver, PO_GoogleResults.class);
+        Random random = new Random();
+        drawnLinkIndex = random.nextInt(results.size());
+        System.out.println("Index: " + drawnLinkIndex);
+        results.get(drawnLinkIndex).click();
+    }
+
+    public String getDrawnLink() {
+        return results.get(drawnLinkIndex).findElement(By.cssSelector("a[href*='http']")).getAttribute("href");
+
+    }
+}

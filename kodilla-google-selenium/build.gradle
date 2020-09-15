@@ -5,9 +5,7 @@ plugins {
 group 'com.kodilla'
 version '1.0-SNAPSHOT'
 
-test {
-    useJUnitPlatform()
-}
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -16,4 +14,5 @@ repositories {
 dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
 }
