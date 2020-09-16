@@ -1,5 +1,8 @@
 package wallet;
 
+import java.text.Format;
+import java.text.NumberFormat;
+
 public class Cashier {
 
     private CashSlot cashSlot;
@@ -9,6 +12,19 @@ public class Cashier {
     }
 
     public void withdraw(Wallet wallet, int amount) {
-        cashSlot.dispense(amount);
+        if(wallet.getBalance() == 0){
+            try {
+                throw new NoMoneyException();
+            } catch (NoMoneyException e) {
+                System.out.println("No money in your wallet");
+            }
+            cashSlot.dispense(wallet.getBalance());
+        }
+        else if (amount > wallet.getBalance()) {
+            cashSlot.dispense(wallet.getBalance());
+        }
+        else{
+            cashSlot.dispense(amount);
+        }
     }
 }
