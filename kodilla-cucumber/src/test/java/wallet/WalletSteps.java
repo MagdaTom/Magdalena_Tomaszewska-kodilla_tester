@@ -18,12 +18,6 @@ public class WalletSteps implements En {
             Assert.assertEquals("Incorrect wallet balance", 200, wallet.getBalance());
         });
 
-
-        When("I request $30", () -> {
-            cashier.withdraw(wallet, 30);
-        });
-
-
         Then("$30 should be dispensed", () -> {
             Assert.assertEquals(30, cashSlot.getContents());
         });
@@ -34,22 +28,17 @@ public class WalletSteps implements En {
 
         });
 
-        When("I request $50", () -> {
-            cashier.withdraw(wallet, 50);
-
+        /*TODO Pls correct acording to code below*/
+        When("^I request (.*)$", (String amount) -> {
+            cashier.withdraw(wallet, Integer.parseInt(amount));
         });
 
         Then("$50 should be dispensed", () -> {
             Assert.assertEquals(50, cashSlot.getContents());
         });
 
-
         Given("I have deposited $60 in my wallet", () -> {
             wallet.deposit(60);
-        });
-
-        When("I request $70", () -> {
-            cashier.withdraw(wallet, 70);
         });
 
         Then("$60 should be dispensed", () -> {
@@ -61,9 +50,6 @@ public class WalletSteps implements En {
             Assert.assertEquals(0, balance);
         });
 
-        When("I request $10", () -> {
-            cashier.withdraw(wallet, 10);
-        });
 
         Then("$0 should be dispensed", () -> {
             Assert.assertEquals( 0, cashSlot.getContents());
