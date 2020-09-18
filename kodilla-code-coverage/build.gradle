@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'jacoco'
+    id 'checkstyle'
 }
 
 group 'com.kodilla'
@@ -34,4 +35,9 @@ jacocoTestCoverageVerification {
             ]
         }
     }
+}
+
+checkstyle {
+    toolVersion "8.30"
+    configFile = file("checkstyle.xml")
 }
