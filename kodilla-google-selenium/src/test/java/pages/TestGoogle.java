@@ -1,9 +1,11 @@
 package pages;
 
 import org.junit.*;
+import org.junit.jupiter.api.RepeatedTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import static org.hamcrest.Matchers.hasSize;
@@ -37,11 +39,11 @@ public class TestGoogle {
         Assert.assertThat(results, hasSize(6));
     }
 
-
     @Test
     public void shouldClickTheDrawnLink() {
         googleSearch.searchResults();
         String link = googleResults.getDrawnLink();
+        googleResults.waitTilElementIsEnabled();
         googleResults.clickDrawnLink();
         randomGoogleResult = new PO_RandomGoogleResult(driver);
         Assert.assertEquals(link, randomGoogleResult.getUrl());
