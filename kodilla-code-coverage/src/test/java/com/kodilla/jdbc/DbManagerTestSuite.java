@@ -1,21 +1,27 @@
 package com.kodilla.jdbc;
 
-
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DbManagerTestSuite {
 
+    private DbManager dbManager;
+    private Statement statement;
+    private ResultSet rs;
+
+    @BeforeEach
+    public void initConnection()throws SQLException{
+        dbManager = DbManager.getInstance();
+    }
+
     @Test
-    public void testConnect() throws SQLException {
+    public void testConnect(){
         //Given
         //When
-        DbManager dbManager = DbManager.getInstance();
         //Then
         Assertions.assertNotNull(dbManager.getConnection());
     }
@@ -23,10 +29,9 @@ public class DbManagerTestSuite {
     @Test
     public void testSelectUsers() throws SQLException {
         //Given
-        DbManager dbManager = DbManager.getInstance();
         String countQuery = "SELECT COUNT(*) FROM USERS";
-        Statement statement = dbManager.getConnection().createStatement();
-        ResultSet rs = statement.executeQuery(countQuery);
+        statement = dbManager.getConnection().createStatement();
+        rs = statement.executeQuery(countQuery);
         int count = 0;
         while (rs.next()) {
             count = rs.getInt("COUNT(*)");
@@ -63,7 +68,18 @@ public class DbManagerTestSuite {
     @Test
     public void testSelectUsersAndPosts() throws SQLException {
         //Given
-        DbManager dbManager = DbManager.getInstance();
+        String countUsersWith2AndMorePosts = "Select Count(*)\n" +
+        "from users u\n" +
+                "inner join posts p\n" +
+                "on u.id = p.user_id\n" +
+                "group by p.user_id\n" +
+                "having count(*) >=2;";
+        statement = dbManager.getConnection().createStatement();
+        rs = statement.executeQuery(countUsersWith2AndMorePosts);
+        int count = 0;
+        while (rs.next()) {
+            count = rs.getInt("COUNT(*)");
+        }
         //When
         String sqlQuery = "Select u.firstname, u.lastname, Count(*)\n" +
                 "from users u\n" +
@@ -71,14 +87,16 @@ public class DbManagerTestSuite {
                 "on u.id = p.user_id\n" +
                 "group by p.user_id\n" +
                 "having count(*) >=2;";
-        Statement statement = dbManager.getConnection().createStatement();
-        ResultSet rs = statement.executeQuery(sqlQuery);
+        statement = dbManager.getConnection().createStatement();
+        rs = statement.executeQuery(sqlQuery);
         //Then
         int counter = 0;
         while (rs.next()) {
             System.out.println(rs.getString("firstname") + ", " + rs.getString("lastname"));
             counter++;
         }
+        int expected = count;
+        Assertions.assertEquals(expected, counter);
         rs.close();
         statement.close();
     }
