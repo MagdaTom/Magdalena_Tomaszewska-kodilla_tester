@@ -6,10 +6,9 @@ Feature: Is it Summer?
     When I ask whether it's Summer
     Then I should be told <answer>
     Examples:
-      | day                   | answer |
-    | last day of December | "Nope" |
-    | first day of August | "Yes! Summer!"|
-    | 10th day of February| "Nope"        |
-    | 20th day of June    | "Nope"        |
-    | first day of August | "Yes! Summer!"|
-    | 21st day of June    | "Yes! Summer!"|
+      | day                  | answer         |
+      | last day of December | "Nope"         |
+      | first day of August  | "Yes! Summer!" |
+      | 10th day of February | "Nope"         |
+      | 20th day of June     | "Nope"         |
+      | 21st day of June     | "Yes! Summer!" |

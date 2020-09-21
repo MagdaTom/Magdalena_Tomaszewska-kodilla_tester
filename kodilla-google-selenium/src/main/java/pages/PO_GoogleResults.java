@@ -41,6 +41,10 @@ public class PO_GoogleResults extends AbstractPage {
         Optional.ofNullable(results.get(drawnLinkIndex)).get().click();
     }
 
+    public void clickLink0() {
+        results.get(0).click();
+    }
+
     public void waitTilElementIsEnabled(){
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(results.get(drawnLinkIndex))).isEnabled();

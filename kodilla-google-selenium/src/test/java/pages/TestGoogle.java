@@ -1,7 +1,6 @@
 package pages;
 
 import org.junit.*;
-import org.junit.jupiter.api.RepeatedTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -34,18 +33,27 @@ public class TestGoogle {
 
     @Test
     public void testGoogleSearchForKodilla() {
-        List<String> results = googleSearch.searchResults();
+        List<String> results = googleSearch.searchResults("Kodilla");
         Assert.assertNotNull(results);
         Assert.assertThat(results, hasSize(6));
+
     }
 
     @Test
     public void shouldClickTheDrawnLink() {
-        googleSearch.searchResults();
+        googleSearch.searchResults("Kodilla");
         String link = googleResults.getDrawnLink();
         googleResults.waitTilElementIsEnabled();
         googleResults.clickDrawnLink();
         randomGoogleResult = new PO_RandomGoogleResult(driver);
         Assert.assertEquals(link, randomGoogleResult.getUrl());
+    }
+
+    @Test
+    public void testGoogleSearchForYouTube() {
+        googleSearch.searchResults("youtube");
+        googleResults.clickLink0();
+        Assert.assertEquals(driver.getTitle(),"youtube.com");
+
     }
 }

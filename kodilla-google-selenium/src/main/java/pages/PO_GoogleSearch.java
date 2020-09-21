@@ -21,13 +21,14 @@ public class PO_GoogleSearch extends AbstractPage {
     private static PO_GoogleResults googleResults;
     private static PO_RandomGoogleResult randomGoogleResult;
 
+
     public PO_GoogleSearch(WebDriver driver) {
         super(driver, "http://www.google.com");
     }
 
-    public List<String> searchResults() {
+    public List<String> searchResults(String phrase) {
         PageFactory.initElements(driver, PO_GoogleSearch.class);
-        inputField.sendKeys("Kodilla");
+        inputField.sendKeys(phrase);
         googleResults = loadResults(driver);
         return googleResults.getResults().stream()
                 .map(WebElement::getText)
