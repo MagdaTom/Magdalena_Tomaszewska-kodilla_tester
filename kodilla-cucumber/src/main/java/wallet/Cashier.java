@@ -22,8 +22,10 @@ public class Cashier {
         }
         else if (amount > wallet.getBalance()) {
             cashSlot.dispense(wallet.getBalance());
+            wallet.debit(wallet.getBalance());
         }
         else{
+            wallet.debit(amount);
             cashSlot.dispense(amount);
         }
     }
