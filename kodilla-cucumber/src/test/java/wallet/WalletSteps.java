@@ -3,7 +3,6 @@ package wallet;
 import io.cucumber.java8.En;
 import org.junit.Assert;
 
-
 public class WalletSteps implements En {
 
     private final Wallet wallet = new Wallet();
@@ -12,9 +11,9 @@ public class WalletSteps implements En {
 
     public WalletSteps() {
         Given("^I have deposited (.*) in my wallet$", (String amount) -> {
-            int a = Integer.parseInt(amount);
-            wallet.deposit(a);
-            Assert.assertEquals("Incorrect wallet balance", a, wallet.getBalance());
+            int depositedAmount = Integer.parseInt(amount);
+            wallet.deposit(depositedAmount);
+            Assert.assertEquals("Incorrect wallet balance", depositedAmount, wallet.getBalance());
         });
 
         When("^I request (.*)$", (String amount) -> {
@@ -22,9 +21,8 @@ public class WalletSteps implements En {
         });
 
         Then("^(.*) should be dispensed$", (String amount) -> {
-            int a = Integer.parseInt(amount);
-            Assert.assertEquals(a, cashSlot.getContents());
+            int dispensedAmount = Integer.parseInt(amount);
+            Assert.assertEquals(dispensedAmount, cashSlot.getContents());
         });
-
     }
 }

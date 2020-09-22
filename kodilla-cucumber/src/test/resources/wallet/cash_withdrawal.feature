@@ -22,4 +22,3 @@ Feature: Cash Withdrawal
     Given I have deposited 0 in my wallet
     When I request 10
     Then 0 should be dispensed
-
