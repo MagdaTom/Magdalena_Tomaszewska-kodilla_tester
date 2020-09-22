@@ -38,7 +38,7 @@ public class IsItSummerSteps implements En {
             this.answer = seasonChecker.checkIfSummer(this.today);
         });
 
-        Then("I should be told {string}", (String string) -> {
+        Then("I should be told: {string}", (String string) -> {
             Assert.assertEquals(string, this.answer);
         });
     }
