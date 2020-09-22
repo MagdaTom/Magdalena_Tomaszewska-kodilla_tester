@@ -10,9 +10,6 @@ public class IsNumberDivisibleSteps implements En {
     public IsNumberDivisibleSteps() {
         When("^I ask whether (.*) is divisible by (.*) or (.*) or (.*) or not$", (String number, String number1, String number2, String number3) -> {
             int providedNumber = Integer.parseInt(number);
-            int a = Integer.parseInt(number1);
-            int b = Integer.parseInt(number2);
-            int c = Integer.parseInt(number3);
             Numbers numbers = new Numbers();
             this.answer = numbers.divisibilityChecker(providedNumber);
         });
