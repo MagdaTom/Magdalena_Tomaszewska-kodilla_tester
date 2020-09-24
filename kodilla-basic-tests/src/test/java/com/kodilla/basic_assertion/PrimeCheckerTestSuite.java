@@ -2,8 +2,7 @@ package com.kodilla.basic_assertion;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PrimeCheckerTestSuite {
     private PrimeChecker checker = new PrimeChecker();
@@ -56,6 +55,14 @@ public class PrimeCheckerTestSuite {
         System.out.println("Test number " + count);
         assertFalse(result);
 
+    }
+
+    @Test
+    public void countChecker(){
+        checker.incrementCount();
+        checker.incrementCount();
+        int countNumber = checker.getCount();
+        assertEquals(2, countNumber);
     }
 }
 //Zmienna statyczna należy do klasy, a nie do obiektu. Dzięki temu raz ustawiona wartość jest "zapamiętywana" pomiędzy poszczególnymi wywołaniami.
