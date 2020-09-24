@@ -1,7 +1,10 @@
 package com.kodilla.rest.controller;
 
+import com.kodilla.rest.KodillaRestApiApplication;
 import com.kodilla.rest.domain.BookDto;
 import com.kodilla.rest.service.BookService;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +19,16 @@ class BookControllerTestSuite {
     BookService bookServiceMock = mock(BookService.class);
     BookController bookController = new BookController(bookServiceMock);
     List<BookDto> booksList = new ArrayList<>();
+
+    @BeforeAll
+    public static void init() {
+        KodillaRestApiApplication.main(new String[0]);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void shouldFetchBooks(){
@@ -51,5 +64,9 @@ class BookControllerTestSuite {
         List<BookDto> result = bookController.getBooks();
         //then
        assertThat(result).contains(book1, book2);
+    }
+    @AfterAll
+    public static void exit(){
+        KodillaRestApiApplication.stop();
     }
 }
