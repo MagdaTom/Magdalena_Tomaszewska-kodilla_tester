@@ -26,3 +26,4 @@ Feature: Cash Withdrawal
     When I request 10
     Then 0 should be dispensed
     And the balance of my wallet should be 0
+    And I should get answer "No money"

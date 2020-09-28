@@ -11,14 +11,10 @@ public class Cashier {
         this.cashSlot = cashSlot;
     }
 
-    public void withdraw(Wallet wallet, int amount) {
+    public void withdraw(Wallet wallet, int amount)  {
         if(wallet.getBalance() == 0){
-            try {
-                throw new NoMoneyException();
-            } catch (NoMoneyException e) {
-                System.out.println("No money in your wallet");
-            }
-            cashSlot.dispense(wallet.getBalance());
+            System.out.println(wallet.getBalance());
+            System.err.println("No money");
         }
         else if (amount > wallet.getBalance()) {
             cashSlot.dispense(wallet.getBalance());

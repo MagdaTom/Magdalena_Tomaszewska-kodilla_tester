@@ -10,7 +10,7 @@ public class WalletSteps implements En {
     private final CashSlot cashSlot = new CashSlot();
     private final Cashier cashier = new Cashier(cashSlot);
 
-    public WalletSteps() throws NoMoneyException {
+    public WalletSteps() {
         Given("^I have deposited (.*) in my wallet$", (String amount) -> {
             int depositedAmount = Integer.parseInt(amount);
             wallet.deposit(depositedAmount);
@@ -30,5 +30,10 @@ public class WalletSteps implements En {
             int balance = Integer.parseInt(amount);
             Assert.assertEquals(balance,wallet.getBalance());
         });
+
+        Then("I should get answer {string}", (String message) -> {
+            System.err.println(message);
+        });
+
     }
 }
