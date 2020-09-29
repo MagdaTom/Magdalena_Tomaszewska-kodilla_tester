@@ -34,6 +34,5 @@ public class WalletSteps implements En {
         Then("I should get answer {string}", (String message) -> {
             System.err.println(message);
         });
-
     }
 }

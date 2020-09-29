@@ -12,6 +12,9 @@ public class Wallet {
     }
 
     public int getBalance() {
+        if(balance ==0){
+            System.out.println("No money in your wallet");
+        }
         return balance;
     }
 

@@ -1,8 +1,5 @@
 package wallet;
 
-import java.text.Format;
-import java.text.NumberFormat;
-
 public class Cashier {
 
     private CashSlot cashSlot;
