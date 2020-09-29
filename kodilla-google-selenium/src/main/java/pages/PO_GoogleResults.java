@@ -38,11 +38,7 @@ public class PO_GoogleResults extends AbstractPage {
     }
 
     public void clickDrawnLink() {
-        Optional.ofNullable(results.get(drawnLinkIndex)).get().click();
-    }
-
-    public void clickLink0() {
-        results.get(0).click();
+        Optional.ofNullable(results.get(drawnLinkIndex).findElement(By.cssSelector("a[href*='http']"))).get().click();
     }
 
     public void waitTilElementIsEnabled(){
