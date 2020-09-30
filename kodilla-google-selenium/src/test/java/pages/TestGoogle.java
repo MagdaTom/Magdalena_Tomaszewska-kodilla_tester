@@ -48,12 +48,4 @@ public class TestGoogle {
         randomGoogleResult = new PO_RandomGoogleResult(driver);
         Assert.assertEquals(link, randomGoogleResult.getUrl());
     }
-
-    @Test
-    public void testGoogleSearchForYouTube() {
-        googleSearch.searchResults("youtube");
-        googleResults.clickLink0();
-        Assert.assertEquals(driver.getTitle(),"youtube.com");
-
-    }
 }
