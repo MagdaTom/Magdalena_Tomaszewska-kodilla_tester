@@ -19,4 +19,5 @@ include 'kodilla-google-selenium'
 include 'kodilla-cucumber'
 include 'kodilla-cucumber2'
 include 'kodilla-code-coverage'
+include 'kodilla-testcontainers'
 
